@@ -8,8 +8,6 @@
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
@@ -41,6 +39,36 @@
 
 ## 📥 Installation
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/yourusername/Map App.git
+### Prerequisites
+
+- **C++ Compiler:** Ensure you have a C++17 compatible compiler installed (e.g., `g++`, `clang++`).
+- **SFML Library:** Install SFML on your system.
+
+## 🚀 Usage
+
+### Launch the Application
+
+1. Run the executable to open the application window.
+
+### Input Node IDs
+
+1. Click on the **From** input box and enter the source node ID.
+2. Click on the **To** input box and enter the destination node ID.
+
+### Find Path
+
+1. Click the **Find** button to compute and highlight the shortest path between the specified nodes on the map.
+
+### Error Handling
+
+- If invalid node IDs are entered or no path exists, the application will display appropriate error messages.
+
+##📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+##🙏 Acknowledgements
+
+SFML - For providing the multimedia library used in this project.
+Course materials and lectures from my Semester 3 Data Structures and Algorithms class.
+GitHub - For hosting the repository and facilitating collaboration.
