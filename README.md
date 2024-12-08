@@ -69,6 +69,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## 🙏 Acknowledgements
 
-SFML - For providing the multimedia library used in this project.
-Course materials and lectures from my Semester 3 Data Structures and Algorithms class.
-GitHub - For hosting the repository and facilitating collaboration.
+- SFML - For providing the multimedia library used in this project.
+- Course materials and lectures from my Semester 3 Data Structures and Algorithms class.
+- GitHub - For hosting the repository and facilitating collaboration.
