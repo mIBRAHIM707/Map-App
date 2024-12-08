@@ -6,7 +6,6 @@
 #include <algorithm>
 #include "Graph.hpp"
 
-// Node constructor and other methods...
 Node::Node() : id(-1), name(""), position(0.f, 0.f) {}
 
 Node::Node(int id, const std::string& name, const sf::Vector2f& pos)
@@ -18,11 +17,10 @@ void Graph::addNode(int id, const std::string& name, const sf::Vector2f& positio
 
 void Graph::addEdge(int from,int to) {
     adjacencyList[from].push_back(to);
-    adjacencyList[to].push_back(from);  // Undirected graph (both directions)
+    adjacencyList[to].push_back(from); 
 }
 
 const std::vector<int>& Graph::getNeighbors(int nodeId) const {
-    // Check if the node ID exists in the adjacency list
     if (adjacencyList.find(nodeId) == adjacencyList.end()) {
         throw std::out_of_range("Node ID not found in adjacency list: " + std::to_string(nodeId));
     }
@@ -40,7 +38,7 @@ const std::unordered_map<int, Node>& Graph::getNodes() const {
     return nodes;
 }
 
-// A* Pathfinding Implementation
+// A*:
 
 float Graph::heuristic(long long fromNodeId, long long toNodeId) {
     const sf::Vector2f& fromPos = nodes[fromNodeId].position;
@@ -74,7 +72,7 @@ std::vector<long long> Graph::findPath(long long startNodeId, long long goalNode
         }
     }
 
-    return {};  // No path found
+    return {}; 
 }
 
 std::vector<long long> Graph::reconstructPath(long long goalNodeId, const std::unordered_map<long long, NodeState>& allNodes) {

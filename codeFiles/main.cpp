@@ -21,25 +21,16 @@ sf::Text toText;
 sf::RectangleShape fromBox;
 sf::RectangleShape toBox;
 
-sf::Color semiTransparentGray(128, 128, 128, 128); // RGBA
+sf::Color semiTransparentGray(128, 128, 128, 128);
 
 int main() {
-    // Define window size
     sf::VideoMode windowSize(1100, 669);
-    
-    // Create the window
     sf::RenderWindow window(windowSize, "DSA Project");
-    
-    // Retrieve desktop resolution
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-    
-    // Calculate center position
     sf::Vector2i windowPosition(
         (desktop.width - windowSize.width) / 2,
         (desktop.height - windowSize.height) / 2
     );
-    
-    // Set window position to center
     window.setPosition(windowPosition);
 
     sf::Font font;
@@ -47,70 +38,63 @@ int main() {
         return -1;  
     }
 
-    // Calculate right edge and center positioning for the boxes
-    float rightEdgeX = window.getSize().x - 200.f;  // 200 is the width of the input box
-    float centerY = (window.getSize().y - 60.f) / 2.f; // Center vertically, adjust by box height
+    float rightEdgeX = window.getSize().x - 200.f;
+    float centerY = (window.getSize().y - 60.f) / 2.f;
 
-    // Set the position of the boxes on the right mid-edge
-    fromBox.setSize(sf::Vector2f(200.f, 60.f));  // Larger box for testing
-    fromBox.setPosition(rightEdgeX - 40.0f, centerY + 40.f);  // Adjust Y for spacing
+    fromBox.setSize(sf::Vector2f(200.f, 60.f));
+    fromBox.setPosition(rightEdgeX - 40.0f, centerY + 40.f);
     fromBox.setFillColor(sf::Color::White);
     fromBox.setOutlineColor(sf::Color::Black);
-    fromBox.setOutlineThickness(2.f);  
+    fromBox.setOutlineThickness(2.f);
 
-    toBox.setSize(sf::Vector2f(200.f, 60.f));  
-    toBox.setPosition(rightEdgeX - 40.0f, centerY - 40.f);  // Adjust Y for spacing
-    toBox.setFillColor(sf::Color::White);   
-    toBox.setOutlineThickness(2.f);          
-    toBox.setOutlineColor(sf::Color::Black);    
+    toBox.setSize(sf::Vector2f(200.f, 60.f));
+    toBox.setPosition(rightEdgeX - 40.0f, centerY - 40.f);
+    toBox.setFillColor(sf::Color::White);
+    toBox.setOutlineThickness(2.f);
+    toBox.setOutlineColor(sf::Color::Black);
 
     fromText.setFont(font);
     fromText.setString("From: ");
-    fromText.setCharacterSize(24);  
+    fromText.setCharacterSize(24);
     fromText.setFillColor(sf::Color::Red);
     fromText.setPosition(rightEdgeX - 27.f, centerY + 55.f);
 
     toText.setFont(font);
     toText.setString("To: ");
-    toText.setCharacterSize(24);  
-    toText.setFillColor(sf::Color::Red); 
-    // Calculate center position for the "To" input text
+    toText.setCharacterSize(24);
+    toText.setFillColor(sf::Color::Red);
     toText.setPosition(rightEdgeX - 27.f, centerY - 25.f);
 
-    // Define error text
     sf::Text errorText;
     errorText.setFont(font);
     errorText.setCharacterSize(20);
     errorText.setFillColor(sf::Color::Red);
-    errorText.setPosition(rightEdgeX - 50.0f, centerY + 200.f); // Position as needed
+    errorText.setPosition(rightEdgeX - 50.0f, centerY + 200.f);
 
     sf::Text mem1;
     mem1.setFont(font);
     mem1.setCharacterSize(18);
     mem1.setFillColor(sf::Color::Black);
     mem1.setString("============================\nDesigned and Developed by:\n============================");
-    mem1.setPosition(rightEdgeX - 70.0f, centerY + 240.f); // Position as needed
+    mem1.setPosition(rightEdgeX - 70.0f, centerY + 240.f);
 
     sf::Text mem2;
     mem2.setFont(font);
     mem2.setCharacterSize(18);
     mem2.setFillColor(sf::Color::Black);
     mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughrul Hussain Khan");
-    mem2.setPosition(rightEdgeX - 40.0f, centerY + 300.f); // Position as needed
+    mem2.setPosition(rightEdgeX - 40.0f, centerY + 300.f);
 
-    // Define border thickness and colors
     const float BORDER_THICKNESS = 2.f;
     sf::Color focusedColor = sf::Color::Green;
 
-    // Define button dimensions and colors
     sf::Vector2f buttonSize(150.f, 50.f);
-    sf::Vector2f buttonPosition(rightEdgeX - 15.0f, centerY + 120.f); // Positioned below the "To" input box
+    sf::Vector2f buttonPosition(rightEdgeX - 15.0f, centerY + 120.f);
 
-    sf::Color buttonColorNormal(100, 100, 250);   // Normal state color
-    sf::Color buttonColorHover(150, 150, 255);    // Hover state color
-    sf::Color buttonColorPressed(50, 50, 200);    // Pressed state color
+    sf::Color buttonColorNormal(100, 100, 250);
+    sf::Color buttonColorHover(150, 150, 255);
+    sf::Color buttonColorPressed(50, 50, 200);
 
-    // Create the Highlight Path button
     Button highlightButton(
         buttonSize,
         buttonPosition,
@@ -119,7 +103,7 @@ int main() {
         buttonColorPressed,
         font,
         "Find",
-        20 // Character size
+        20
     );
     bool highlightPath = false;
 
@@ -137,13 +121,13 @@ int main() {
         std::stringstream ss(line);
         std::string id_str, lat_str, lon_str;
         double lat, lon;
-        int id;  
+        int id;
 
         if (std::getline(ss, id_str, ',') && std::getline(ss, lat_str, ',') && std::getline(ss, lon_str)) {
             try {
-                id = std::stoi(id_str);  
-                lat = std::stod(lat_str); 
-                lon = std::stod(lon_str); 
+                id = std::stoi(id_str);
+                lat = std::stod(lat_str);
+                lon = std::stod(lon_str);
             } catch (const std::exception& e) {
                 std::cerr << "Error: Could not convert values - " << e.what() << std::endl;
                 continue;
@@ -153,7 +137,6 @@ int main() {
         }
     }
 
-    // After loading nodes and before rendering
     std::ifstream edgesFile("assets/edges.txt");
     if (!edgesFile.is_open()) {
         std::cerr << "Error: Could not open edges file!" << std::endl;
@@ -198,7 +181,7 @@ int main() {
                     isFromFocused = true;
                     fromBox.setOutlineThickness(BORDER_THICKNESS);
                     fromBox.setOutlineColor(focusedColor);
-                    toBox.setOutlineThickness(2.f);          
+                    toBox.setOutlineThickness(2.f);
                     toBox.setOutlineColor(sf::Color::Black);
                     isToFocused = false;
                     highlightPath = false;
@@ -207,7 +190,7 @@ int main() {
                     toBox.setOutlineThickness(BORDER_THICKNESS);
                     toBox.setOutlineColor(focusedColor);
                     fromBox.setOutlineColor(sf::Color::Black);
-                    fromBox.setOutlineThickness(2.f);  
+                    fromBox.setOutlineThickness(2.f);
                     isToFocused = true;
                     highlightPath = false;
                 } else {
@@ -222,7 +205,7 @@ int main() {
                         fromNodeId.pop_back();
                         highlightPath = false;
                     } else if (event.text.unicode < 128 && fromNodeId.size() < 3) {  
-                        highlightPath = false; // Reset path highlighting on input change
+                        highlightPath = false;
                         fromNodeId += static_cast<char>(event.text.unicode);
                     }
                 } else if (isToFocused) {
@@ -230,24 +213,21 @@ int main() {
                         toNodeId.pop_back();
                         highlightPath = false;
                     } else if (event.text.unicode < 128) {  
-                        highlightPath = false; // Reset path highlighting on input change
+                        highlightPath = false;
                         toNodeId += static_cast<char>(event.text.unicode);
                     }
                 }
             }
-            // Update the button with current event
+
             highlightButton.update(window, event);
         }
 
-        // Check if the button was clicked
         if(highlightButton.isClicked()){
-            // After ensuring both node IDs are entered
             if (!fromNodeId.empty() && !toNodeId.empty()) {
                 try {
                     long long fromId = std::stoll(fromNodeId);
                     long long toId = std::stoll(toNodeId);
 
-                    // Validate node existence
                     if (graph.getNodes().find(fromId) == graph.getNodes().end()) {
                         errorText.setString("Wrong 'From' Location");
                         fromNodeId = "";
@@ -263,7 +243,7 @@ int main() {
                             highlightPath = false;
                         } else {
                             highlightPath = true;
-                            errorText.setString(""); // Clear error message
+                            errorText.setString("");
                         }
                     }
                 } catch (const std::exception& e) {
@@ -274,32 +254,29 @@ int main() {
         }
 
         window.clear(semiTransparentGray);
-        
-        drawGraph(window, graph, mapSprite, font, fromNodeId, toNodeId, (highlightPath ? path : std::vector<long long>()));  // Pass fromNodeId and toNodeId
+        drawGraph(window, graph, mapSprite, font, fromNodeId, toNodeId, (highlightPath ? path : std::vector<long long>()));
         window.draw(fromBox);
         window.draw(fromText);
         window.draw(toBox);
         window.draw(toText);
 
-        // Display the current text inside the boxes
         sf::Text fromInputText;
         fromInputText.setFont(font);
-        fromInputText.setString(fromNodeId);  // Current text input
+        fromInputText.setString(fromNodeId);
         fromInputText.setCharacterSize(24);
         fromInputText.setFillColor(sf::Color::Black);
-        fromInputText.setPosition(rightEdgeX + 50.f, centerY + 55.f);  // Align text inside the box
+        fromInputText.setPosition(rightEdgeX + 50.f, centerY + 55.f);
         window.draw(fromInputText);
 
         sf::Text toInputText;
         toInputText.setFont(font);
-        toInputText.setString(toNodeId);  // Current text input
+        toInputText.setString(toNodeId);
         toInputText.setCharacterSize(24);
         toInputText.setFillColor(sf::Color::Black);
-        toInputText.setPosition(rightEdgeX + 20.f, centerY - 25.f);  // Align text inside the box
+        toInputText.setPosition(rightEdgeX + 50.f, centerY - 25.f);
         window.draw(toInputText);
 
         highlightButton.draw(window);
-
         window.draw(errorText);
         window.draw(mem1);
         window.draw(mem2);
