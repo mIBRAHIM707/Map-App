@@ -63,11 +63,11 @@
 
 - If invalid node IDs are entered or no path exists, the application will display appropriate error messages.
 
-##📜 License
+## 📜 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-##🙏 Acknowledgements
+## 🙏 Acknowledgements
 
 SFML - For providing the multimedia library used in this project.
 Course materials and lectures from my Semester 3 Data Structures and Algorithms class.
