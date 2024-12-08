@@ -82,7 +82,7 @@ int main() {
     mem2.setFont(font);
     mem2.setCharacterSize(18);
     mem2.setFillColor(sf::Color::Black);
-    mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughrul Hussain Khan");
+    mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughral Hussain Khan");
     mem2.setPosition(rightEdgeX - 40.0f, centerY + 300.f);
 
     const float BORDER_THICKNESS = 2.f;
