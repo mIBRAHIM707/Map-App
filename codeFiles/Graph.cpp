@@ -63,7 +63,7 @@ std::vector<long long> Graph::findPath(long long startNodeId, long long goalNode
         }
 
         for (const auto& neighbor : adjacencyList[current.nodeId]) {
-            float tentativeGCost = current.g_cost + 1.0f;  // Assuming uniform weight for edges (1.0)
+            float tentativeGCost = current.g_cost + 1.0f;  
             if (allNodes.find(neighbor) == allNodes.end() || tentativeGCost < allNodes[neighbor].g_cost) {
                 NodeState nextNode = {neighbor, tentativeGCost, tentativeGCost + heuristic(neighbor, goalNodeId), current.nodeId};
                 openSet.push(nextNode);
