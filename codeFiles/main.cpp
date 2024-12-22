@@ -21,7 +21,7 @@ sf :: Text toText;
 sf :: RectangleShape fromBox;
 sf :: RectangleShape toBox;
 
-sf :: Color semiTransparentGray(128, 128, 128, 128);
+sf :: Color semiTransparentGray(90, 121, 124);
 
 int main() {
     sf :: VideoMode windowSize(1100, 669);
@@ -108,6 +108,26 @@ int main() {
     bool highlightPath = false;
 
     Graph graph;
+
+    sf :: Texture logoTexture;
+    if (!logoTexture.loadFromFile("assets/logo.png")) {
+        std :: cerr << "Error: Could not open logo file!" << std :: endl;
+        return -1;
+    }
+
+    sf :: Sprite logoSprite(logoTexture);
+
+    logoSprite.setPosition(rightEdgeX - 160.0f, centerY - 200.0f); 
+
+    sf :: Texture names;
+    if (!names.loadFromFile("assets/names.jpg")) {
+        std :: cerr << "Error: Could not open names file!" << std :: endl;
+        return -1;
+    }
+
+    sf :: Sprite namesSprite(names);
+
+    namesSprite.setPosition(rightEdgeX - 160.0f, centerY + 210.0f); 
 
     std :: ifstream file("assets/coordinates.txt");
     if (!file.is_open()) {
@@ -275,9 +295,11 @@ int main() {
 
         highlightButton.draw(window);
 
+        window.draw(logoSprite);
+        window.draw(namesSprite);
         window.draw(errorText);
-        window.draw(mem1);
-        window.draw(mem2);
+        //window.draw(mem1);
+        //window.draw(mem2);
 
         window.display();
     }
