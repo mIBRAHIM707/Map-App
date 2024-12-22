@@ -35,7 +35,7 @@ int main() {
 
     sf::Font font;
     if (!font.loadFromFile("assets/Montserrat-Regular.ttf")) {
-        return -1;  
+        return -1;
     }
 
     float rightEdgeX = window.getSize().x - 200.f;
@@ -82,7 +82,7 @@ int main() {
     mem2.setFont(font);
     mem2.setCharacterSize(18);
     mem2.setFillColor(sf::Color::Black);
-    mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughral Hussain Khan");
+    mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughrul Hussain Khan");
     mem2.setPosition(rightEdgeX - 40.0f, centerY + 300.f);
 
     const float BORDER_THICKNESS = 2.f;
@@ -132,8 +132,7 @@ int main() {
                 std::cerr << "Error: Could not convert values - " << e.what() << std::endl;
                 continue;
             }
-
-            graph.addNode(id, "Building " + std::to_string(id), sf::Vector2f(lat, lon));
+            graph.addNode(id, std::to_string(id), sf::Vector2f(lat, lon));
         }
     }
 
@@ -157,7 +156,6 @@ int main() {
                 std::cerr << "Error: Could not convert edge values - " << e.what() << std::endl;
                 continue;
             }
-
             graph.addEdge(from, to);
         }
     }
@@ -201,10 +199,10 @@ int main() {
 
             if (event.type == sf::Event::TextEntered) {
                 if (isFromFocused) {
-                    if (event.text.unicode == 8 && fromNodeId.size() > 0) { 
+                    if (event.text.unicode == 8 && fromNodeId.size() > 0) {
                         fromNodeId.pop_back();
                         highlightPath = false;
-                    } else if (event.text.unicode < 128 && fromNodeId.size() < 3) {  
+                    } else if (event.text.unicode < 128 && fromNodeId.size() < 3) {
                         highlightPath = false;
                         fromNodeId += static_cast<char>(event.text.unicode);
                     }
@@ -212,17 +210,16 @@ int main() {
                     if (event.text.unicode == 8 && toNodeId.size() < 3) {
                         toNodeId.pop_back();
                         highlightPath = false;
-                    } else if (event.text.unicode < 128) {  
+                    } else if (event.text.unicode < 128) {
                         highlightPath = false;
                         toNodeId += static_cast<char>(event.text.unicode);
                     }
                 }
             }
-
             highlightButton.update(window, event);
         }
 
-        if(highlightButton.isClicked()){
+        if (highlightButton.isClicked()) {
             if (!fromNodeId.empty() && !toNodeId.empty()) {
                 try {
                     long long fromId = std::stoll(fromNodeId);
@@ -273,10 +270,11 @@ int main() {
         toInputText.setString(toNodeId);
         toInputText.setCharacterSize(24);
         toInputText.setFillColor(sf::Color::Black);
-        toInputText.setPosition(rightEdgeX + 50.f, centerY - 25.f);
+        toInputText.setPosition(rightEdgeX + 20.f, centerY - 25.f);
         window.draw(toInputText);
 
         highlightButton.draw(window);
+
         window.draw(errorText);
         window.draw(mem1);
         window.draw(mem2);
