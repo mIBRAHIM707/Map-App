@@ -42,13 +42,13 @@ int main() {
     float centerY = (window.getSize().y - 60.f) / 2.f;
 
     fromBox.setSize(sf::Vector2f(200.f, 60.f));
-    fromBox.setPosition(rightEdgeX - 40.0f, centerY + 40.f);
+    fromBox.setPosition(rightEdgeX - 90.0f, centerY + 40.f);
     fromBox.setFillColor(sf::Color::White);
     fromBox.setOutlineColor(sf::Color::Black);
     fromBox.setOutlineThickness(2.f);
 
     toBox.setSize(sf::Vector2f(200.f, 60.f));
-    toBox.setPosition(rightEdgeX - 40.0f, centerY - 40.f);
+    toBox.setPosition(rightEdgeX - 90.0f, centerY - 40.f);
     toBox.setFillColor(sf::Color::White);
     toBox.setOutlineThickness(2.f);
     toBox.setOutlineColor(sf::Color::Black);
@@ -57,39 +57,39 @@ int main() {
     fromText.setString("From: ");
     fromText.setCharacterSize(24);
     fromText.setFillColor(sf::Color::Red);
-    fromText.setPosition(rightEdgeX - 27.f, centerY + 55.f);
+    fromText.setPosition(rightEdgeX - 77.f, centerY + 55.f);
 
     toText.setFont(font);
     toText.setString("To: ");
     toText.setCharacterSize(24);
     toText.setFillColor(sf::Color::Red);
-    toText.setPosition(rightEdgeX - 27.f, centerY - 25.f);
+    toText.setPosition(rightEdgeX - 77.f, centerY - 25.f);
 
     sf::Text errorText;
     errorText.setFont(font);
     errorText.setCharacterSize(20);
     errorText.setFillColor(sf::Color::Red);
-    errorText.setPosition(rightEdgeX - 50.0f, centerY + 200.f);
+    errorText.setPosition(rightEdgeX - 100.0f, centerY + 200.f);
 
     sf::Text mem1;
     mem1.setFont(font);
     mem1.setCharacterSize(18);
     mem1.setFillColor(sf::Color::Black);
     mem1.setString("============================\nDesigned and Developed by:\n============================");
-    mem1.setPosition(rightEdgeX - 70.0f, centerY + 240.f);
+    mem1.setPosition(rightEdgeX - 120.0f, centerY + 240.f);
 
     sf::Text mem2;
     mem2.setFont(font);
     mem2.setCharacterSize(18);
     mem2.setFillColor(sf::Color::Black);
     mem2.setString("Muhammad Ibrahim\nZouhair Azam Khan\nTughrul Hussain Khan");
-    mem2.setPosition(rightEdgeX - 40.0f, centerY + 300.f);
+    mem2.setPosition(rightEdgeX - 90.0f, centerY + 300.f);
 
     const float BORDER_THICKNESS = 2.f;
     sf::Color focusedColor = sf::Color::Green;
 
     sf::Vector2f buttonSize(150.f, 50.f);
-    sf::Vector2f buttonPosition(rightEdgeX - 15.0f, centerY + 120.f);
+    sf::Vector2f buttonPosition(rightEdgeX - 65.0f, centerY + 120.f);
 
     sf::Color buttonColorNormal(100, 100, 250);
     sf::Color buttonColorHover(150, 150, 255);
@@ -262,7 +262,7 @@ int main() {
         fromInputText.setString(fromNodeId);
         fromInputText.setCharacterSize(24);
         fromInputText.setFillColor(sf::Color::Black);
-        fromInputText.setPosition(rightEdgeX + 50.f, centerY + 55.f);
+        fromInputText.setPosition(rightEdgeX + 0.f, centerY + 55.f);
         window.draw(fromInputText);
 
         sf::Text toInputText;
@@ -270,7 +270,7 @@ int main() {
         toInputText.setString(toNodeId);
         toInputText.setCharacterSize(24);
         toInputText.setFillColor(sf::Color::Black);
-        toInputText.setPosition(rightEdgeX + 20.f, centerY - 25.f);
+        toInputText.setPosition(rightEdgeX - 30.f, centerY - 25.f);
         window.draw(toInputText);
 
         highlightButton.draw(window);
